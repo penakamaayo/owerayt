@@ -18,6 +18,19 @@ html,body {
   font-family: 'Droid Sans Mono', sans-serif;
 }
 
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='submit'],
+input[type='date'],
+input[type='time'],
+textarea,
+select {
+  @extend .form-control;
+}
+
+
 p,h1,h2,h3,h4 {
   font-family: 'Droid Sans Mono', sans-serif;
 }
@@ -193,4 +206,8 @@ h3,h4,h5,.panel {
    border-color:#efefef;
 }
 
+
+.padding-top {
+  padding-top: 60px;
+}
 

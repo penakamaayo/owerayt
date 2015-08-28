@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %title Owerayt
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    .page-container
+      / top navbar
+      %nav.navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
+        .navbar-header
+          = link_to 'CHICKRET', '#', :class => 'navbar-brand'
+
+        .container.padding-top
+          .row
+            .col-md-4.col-md-offset-4
+              = yield
+
+    = render :partial => 'shared/footer'
+
+
