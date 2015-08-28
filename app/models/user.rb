@@ -3,7 +3,7 @@
 # Table name: users
 #
 #  id                     :integer          not null, primary key
-#  email                  :string           default(""), not null
+#  email                  :string           default('), not null
 #  encrypted_password     :string           default(""), not null
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
@@ -28,4 +28,8 @@ class User < ActiveRecord::Base
 
   has_many :contacts
   has_many :contact, :through => :contacts
+
+  has_many :inverse_contacts, :class_name => 'Contact', :foreign_key => 'contact_id'
+  has_many :inverse_friends, :through => :inverse_contacts, :source => :user
+
 end

@@ -22,6 +22,16 @@
           = render :partial => 'shared/sidebar'
           / /main
           .col-xs-12.col-sm-9{"data-spy" => "scroll", "data-target" => "#sidebar-nav"}
+
+            - flash.each do |type, msg|
+              - type = type == 'alert' ? 'danger' : 'info'
+
+
+              .alert.alert-dismissible{:role => "alert", :class => "alert-#{type}"}
+                %button.close{'aria-label' => 'Close', 'data-dismiss' => 'alert', :type => 'button'}
+                  %span{"aria-hidden" => "true"} ×
+                = msg
+
             = yield
 
     = render :partial => 'shared/footer'

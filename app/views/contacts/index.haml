@@ -1,0 +1,37 @@
+%h1
+  Contacts
+  %span
+    %a.btn.btn-primary{'aria-controls' => 'contact-form', 'aria-expanded' => 'false', 'data-toggle' => 'collapse', :href => '#contact-form', :role => 'button'}
+      Add contact
+
+
+
+#contact-form.collapse
+  .well
+    = form_tag :add_contact do
+      = email_field_tag :contact_email, nil, :placeholder => 'Email Address'
+      = submit_tag 'ADD'
+
+%table.table
+  %tr
+    %th Full Name
+    %th Email
+    %th Contact Number
+
+  - @contacts.each do |contact|
+    %tr
+      %td= contact.contact.full_name
+      %td= contact.contact.email
+      %td= contact.contact.contact_number
+
+
+
+
+
+
+- if current_user.inverse_friends.present?
+  %h3 People who added me:
+  %ul
+    - for user in current_user.inverse_friends
+      %li=h user.email
+

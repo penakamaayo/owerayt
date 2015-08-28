@@ -5,4 +5,8 @@ Rails.application.routes.draw do
 
   root 'dashboard#index'
 
+
+  resources :contacts
+
+  post '/add_contact' => 'contacts#create', :as => :add_contact
 end
