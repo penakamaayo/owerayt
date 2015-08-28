@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150828060919) do
+ActiveRecord::Schema.define(version: 20150828095635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,18 @@ ActiveRecord::Schema.define(version: 20150828060919) do
 
   add_index "contacts", ["contact_id"], name: "index_contacts_on_contact_id", using: :btree
   add_index "contacts", ["user_id"], name: "index_contacts_on_user_id", using: :btree
+
+  create_table "debts", force: :cascade do |t|
+    t.decimal  "amount"
+    t.text     "comment"
+    t.integer  "user_id"
+    t.date     "due_date"
+    t.date     "paid_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "debts", ["user_id"], name: "index_debts_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
