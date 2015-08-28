@@ -9,6 +9,8 @@ license: MIT
 author: bootply.com
 */
 
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans+Mono);
 
 html,body {
@@ -37,19 +39,19 @@ hr {
 
 /* set the fixed height of the footer here */
 footer {
-  height: 120px;
+  height: auto;
   background-color: #222222;
   border:0 solid #080808;
   border-top-width: 1px;
-  margin-top:50px;
+  margin-top:80px;
 }
 
 footer > .container {
-  padding: 20px;
+  padding: 5px;
 }
 
 body {
-  padding-top: 51px; 
+  padding-top: 51px;
   background: #1E1E1E;
   color: #f9f9f9;
 }
@@ -144,7 +146,7 @@ a {
   #sidebar .nav>li>a:hover, #sidebar .nav>li>a:focus {
     text-decoration: none;
     background: linear-gradient(#373737, #323232);
-    color: #fff;  
+    color: #fff;
   }
   #sidebar .nav .caret {
     border-top-color: #fff;
@@ -183,7 +185,7 @@ a {
 .nav-tabs>li>a {
   border-radius:0;
 }
-     
+
 h3,h4,h5,.panel {
    color:#555555;
 }
