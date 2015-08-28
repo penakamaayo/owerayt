@@ -4,3 +4,7 @@
       %li= link_to 'Home', '#'
       %li= link_to 'My', '#section1'
       %li= link_to 'Their', '#section2'
+      - if user_signed_in?
+        %li
+          = link_to 'Sign out', destroy_user_session_path, :method => :delete
+
