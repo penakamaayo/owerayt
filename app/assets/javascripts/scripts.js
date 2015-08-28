@@ -1,9 +1,12 @@
-$(document).ready(function(){$('[data-toggle=offcanvas]').click(function() {
-  $('.row-offcanvas').toggleClass('active');
-});
+var ready = function() {
+  $('[data-toggle=offcanvas]').click(function() {
+    $('.row-offcanvas').toggleClass('active');
+  });
 
-$('.btn-toggle').click(function() {
-  $(this).find('.btn').toggleClass('active').toggleClass('btn-default').toggleClass('btn-primary');
-});
+  $('.btn-toggle').click(function() {
+    $(this).find('.btn').toggleClass('active').toggleClass('btn-default').toggleClass('btn-primary');
+  });
+};
 
-});
+$(document).ready(ready);
+$(document).on('page:load', ready);
