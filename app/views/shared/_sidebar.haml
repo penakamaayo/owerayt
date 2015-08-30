@@ -1,14 +1,21 @@
 #sidebar.col-xs-6.col-sm-3.sidebar-offcanvas{:role => 'navigation'}
   %div{'data-offset-bottom' => '90', 'data-offset-top' => '45', 'data-spy' => 'affix'}
     %ul#sidebar-nav.nav
-      %li= link_to 'Home', '#'
-      %li= link_to 'My', '#section1'
-      %li= link_to 'Their', '#section2'
+      %li
+        = link_to '#section1' do
+          %span.glyphicon.glyphicon-user{'aria-hidden' => true}
+          My Debts
+      %li
+        = link_to '#section2' do
+          %span.glyphicon.glyphicon-chevron-right{'aria-hidden' => true}
+          Their Debts
+
       - if user_signed_in?
         %li
-          = link_to 'Contacts', [:contacts]
+          = link_to [:contacts] do
+            %span.glyphicon.glyphicon-book{'aria-hidden' => true}
+            Contacts
         %li
-          = link_to 'Sign out', destroy_user_session_path, :method => :delete
-
-
-
+          = link_to destroy_user_session_path, :method => :delete do
+            %span.glyphicon.glyphicon-off{'aria-hidden' => true}
+            Logout
