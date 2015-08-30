@@ -49,7 +49,7 @@ class ContactsController < ApplicationController
 
 
   def contact_exists?
-    current_user.contacts.where(:user_id => @contact_id).any?
+    current_user.contacts.where(:contact_id => @contact_id).any?
   end
 
 end
