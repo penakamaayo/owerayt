@@ -7,11 +7,11 @@
 
 .padding-top
 
-%h3 Unpaid Total: #{number_to_currency @debts.unpaid.map.sum(&:amount)}
+%h3 Unpaid Total: #{number_to_currency @debts.unpaid.map.sum(&:amount), :locale => :ph}
 
 %table.table
   %tr
-    %th To
+    %th #{params[:owner] == 'my' ? 'To' : 'From'}
     %th Amount
     %th Comment
     %th Created At
@@ -19,8 +19,8 @@
 
   - @debts.each do |debt|
     %tr
-      %td= debt.owner.full_name
-      %td= number_to_currency debt.amount
+      %td= "#{params[:owner] == 'my' ? debt.payer.full_name : debt.owner.full_name}"
+      %td= number_to_currency debt.amount, :locale => :ph
       %td= debt.comment
       %td= debt.start_date.strftime '%b-%d-%Y'
       %td= debt.paid ? 'Yes' : 'No'
