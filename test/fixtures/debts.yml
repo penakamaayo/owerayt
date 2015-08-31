@@ -3,13 +3,17 @@
 one:
   amount: 9.99
   comment: MyText
-  user_id: MyString
-  due_date: 2015-08-28
-  paid_date: 2015-08-28
+  owner_id: 1
+  payer_id: 1
+  start_date: 2015-08-31
+  due_date: 2015-08-31
+  paid_date: 2015-08-31
 
 two:
   amount: 9.99
   comment: MyText
-  user_id: MyString
-  due_date: 2015-08-28
-  paid_date: 2015-08-28
+  owner_id: 1
+  payer_id: 1
+  start_date: 2015-08-31
+  due_date: 2015-08-31
+  paid_date: 2015-08-31
