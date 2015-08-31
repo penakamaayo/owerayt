@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users,
     :controllers => {:registrations => 'registrations'}
 
-  root 'dashboard#index'
+  root 'debts#index', :owner => 'my'
 
 
   resources :contacts
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   # get 'debts/new' => 'debts#new'
 
-  # post '/debts' => 'debts#create', :as => :add_debt
+# post '/debts' => 'debts#create', :as => :add_debt
 
   resources :debts, :only => [:new, :create, :edit, :update, :destroy]
 
