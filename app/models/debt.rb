@@ -27,4 +27,9 @@ class Debt < ActiveRecord::Base
     User.find self.owner_id
   end
 
+
+  def payer
+    User.find self.payer_id
+  end
+
 end

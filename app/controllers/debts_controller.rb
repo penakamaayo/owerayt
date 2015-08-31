@@ -28,9 +28,14 @@ class DebtsController < ApplicationController
     @debt = Debt.new attributes
 
 
-    @debt.save ?
-      flash[:notice] = 'Debt Created.' :
+    if @debt.save
+      flash[:notice] = 'Debt Created.'
+
+
+      OwerightMailer.notify_payer(@debt).deliver_now unless @debt.paid
+    else
       flash[:error] = 'Unable to Create Debt.'
+    end
 
     redirect_to :back
   end

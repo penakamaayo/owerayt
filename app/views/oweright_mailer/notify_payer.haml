@@ -1,0 +1,19 @@
+%h1 Hi #{@payer.full_name}
+
+
+%h4
+  #{@owner.full_name} said you owe him/her #{number_to_currency @debt.amount}!
+
+- if @debt.comment.present?
+  %h5
+    Additional Details:
+
+  %p= @debt.comment
+
+%h5
+  Please settle this ASAP. OK? OWERIGHT!
+
+
+
+
+
