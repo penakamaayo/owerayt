@@ -1,0 +1,23 @@
+- owner = params[:owner] == 'my' ? 'My' : 'Their'
+
+%h1
+  #{owner} Debts
+  %span
+    = link_to 'Create Debt', [:new, :debt], :class => 'btn btn-success'
+
+.padding-top
+%table.table
+  %tr
+    %th To
+    %th Amount
+    %th Comment
+    %th Created At
+    %th Paid
+
+  - @debts.each do |debt|
+    %tr
+      %td= debt.owner.full_name
+      %td= number_to_currency debt.amount
+      %td= debt.comment
+      %td= debt.start_date.strftime '%b-%d-%Y'
+      %td= debt.paid ? 'Yes' : 'No'

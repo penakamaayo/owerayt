@@ -12,7 +12,16 @@
 #  paid_date  :date
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  paid       :boolean          default(FALSE)
 #
 
 class Debt < ActiveRecord::Base
+
+  belongs_to :user
+
+
+  def owner
+    User.find self.owner_id
+  end
+
 end

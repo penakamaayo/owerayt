@@ -17,4 +17,7 @@ Rails.application.routes.draw do
   # post '/debts' => 'debts#create', :as => :add_debt
 
   resources :debts, :only => [:new, :create, :edit, :update, :destroy]
+
+  get 'debts/:owner' => 'debts#index'
+
 end

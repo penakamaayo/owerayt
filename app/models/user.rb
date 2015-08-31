@@ -32,4 +32,19 @@ class User < ActiveRecord::Base
   has_many :inverse_contacts, :class_name => 'Contact', :foreign_key => 'contact_id'
   has_many :inverse_friends, :through => :inverse_contacts, :source => :user
 
+  has_many :debts, :foreign_key => 'owner_id'
+
+
+
+  def own_debts
+    Debt.where(:payer_id => self.id).all
+  end
+
+
+  def their_debts
+    Debt.where(:owner_id => self.id).all
+  end
+
+
+
 end
