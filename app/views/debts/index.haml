@@ -6,6 +6,9 @@
     = link_to 'Create Debt', [:new, :debt], :class => 'btn btn-success'
 
 .padding-top
+
+%h3 Unpaid Total: #{number_to_currency @debts.unpaid.map.sum(&:amount)}
+
 %table.table
   %tr
     %th To

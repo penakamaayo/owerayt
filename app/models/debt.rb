@@ -20,6 +20,9 @@ class Debt < ActiveRecord::Base
   belongs_to :user
 
 
+  scope :unpaid, -> { where(:paid => false) }
+
+
   def owner
     User.find self.owner_id
   end
