@@ -18,4 +18,4 @@
         %li
           = link_to destroy_user_session_path, :method => :delete do
             %span.glyphicon.glyphicon-off{'aria-hidden' => true}
-            Logout
+            Logout, #{current_user.email}
