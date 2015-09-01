@@ -16,11 +16,22 @@
     %th Comment
     %th Created At
     %th Paid
+    - if params[:owner] == 'theirs'
+      %th
+      %th
 
   - @debts.each do |debt|
     %tr
-      %td= "#{params[:owner] == 'my' ? debt.payer.full_name : debt.owner.full_name}"
+      %td= "#{params[:owner] == 'my' ? debt.owner.full_name : debt.payer.full_name}"
       %td= number_to_currency debt.amount, :locale => :ph
       %td= debt.comment
       %td= debt.start_date.strftime '%b-%d-%Y'
       %td= debt.paid ? 'Yes' : 'No'
+      - if params[:owner] == 'theirs'
+        %td
+          = link_to [:edit, debt], :class => 'btn btn-sm btn-success form-control' do
+            %span.glyphicon.glyphicon-edit{'aria-hidden' => true}
+        %td
+          = link_to [debt], :class => 'btn btn-sm btn-danger form-control',
+            :method => :delete do
+            %span.glyphicon.glyphicon-trash{'aria-hidden' => true}

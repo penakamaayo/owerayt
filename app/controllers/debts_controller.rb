@@ -15,6 +15,21 @@ class DebtsController < ApplicationController
   end
 
 
+  def edit
+    @debt = Debt.find params[:id]
+  end
+
+
+  def update
+    @debt = Debt.find params[:id]
+
+    @debt.update_attributes(debt_params) ?
+      flash[:notice] = 'Successfully updated debt.' :
+      flash[:notice] = 'Failed to update debt.'
+
+    redirect_to :back
+  end
+
   def create
     attributes = debt_params.clone
 
@@ -40,6 +55,16 @@ class DebtsController < ApplicationController
     redirect_to :back
   end
 
+
+  def destroy
+    @debt = Debt.find params[:id]
+
+    @debt.destroy ?
+      flash[:notice] = 'Debt Deleted.' :
+      flash[:notice] = 'Unable to Delete Debt.'
+
+    redirect_to :back
+  end
 
 
 
