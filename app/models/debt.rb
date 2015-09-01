@@ -17,19 +17,10 @@
 
 class Debt < ActiveRecord::Base
 
-  belongs_to :user
+  belongs_to :owner, :class_name => 'User', :foreign_key => 'owner_id'
+  belongs_to :payer, :class_name => 'User', :foreign_key => 'payer_id'
 
 
   scope :unpaid, -> { where(:paid => false) }
-
-
-  def owner
-    User.find self.owner_id
-  end
-
-
-  def payer
-    User.find self.payer_id
-  end
 
 end

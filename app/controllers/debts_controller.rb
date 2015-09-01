@@ -4,8 +4,8 @@ class DebtsController < ApplicationController
   def index
     @debts =
       (params[:owner] == 'theirs') ?
-        current_user.their_debts :
-        current_user.own_debts
+        current_user.debts :
+        current_user.inverse_debts
   end
 
 
