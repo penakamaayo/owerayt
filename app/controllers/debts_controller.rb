@@ -1,5 +1,6 @@
 class DebtsController < ApplicationController
 
+  before_filter :initialize_debt, :only => [:edit, :update, :destroy]
 
   def index
     @debts =
@@ -9,26 +10,23 @@ class DebtsController < ApplicationController
   end
 
 
-
   def new
     @debt = Debt.new
   end
 
 
   def edit
-    @debt = Debt.find params[:id]
   end
 
 
   def update
-    @debt = Debt.find params[:id]
-
     @debt.update_attributes(debt_params) ?
       flash[:notice] = 'Successfully updated debt.' :
       flash[:notice] = 'Failed to update debt.'
 
     redirect_to :back
   end
+
 
   def create
     attributes = debt_params.clone
@@ -57,8 +55,6 @@ class DebtsController < ApplicationController
 
 
   def destroy
-    @debt = Debt.find params[:id]
-
     @debt.destroy ?
       flash[:notice] = 'Debt Deleted.' :
       flash[:notice] = 'Unable to Delete Debt.'
@@ -70,6 +66,11 @@ class DebtsController < ApplicationController
 
 
   protected
+
+  def initialize_debt
+    @debt = Debt.find params[:id]
+  end
+
 
   def params_valid? attributes
     attributes[:owner_id].present? || attributes[:payer_id].present?
