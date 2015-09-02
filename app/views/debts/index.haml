@@ -19,6 +19,8 @@
     - if params[:owner] == 'theirs'
       %th
       %th
+    - else
+      %th
 
   - @debts.each do |debt|
     %tr
@@ -35,3 +37,6 @@
           = link_to [debt], :class => 'btn btn-sm btn-danger form-control',
             :method => :delete do
             %span.glyphicon.glyphicon-trash{'aria-hidden' => true}
+      - else
+        %td
+          = link_to 'Send Email', '#', :class => 'btn btn-sm btn-success'

@@ -8,8 +8,15 @@ class OwerightMailer < ActionMailer::Base
     @payer = debt.payer
     @owner = debt.owner
 
-    mail :to => @payer.email, :subject => 'New Debt Notification: OWERIGHT'
+    mail :to => @payer.email, :subject => 'OWERIGHT: New Debt Notification'
+  end
 
+
+  def send_contact_invitation email, user
+    @user = user
+    @email = email
+
+    mail :to => @email, :subject => 'OWERIGHT: Invitation'
   end
 
 end

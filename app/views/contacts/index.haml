@@ -1,3 +1,12 @@
+- if params[:email].present?
+  .alert.alert-dismissible{:role => "alert", :class => "alert-info"}
+    %button.close{'aria-label' => 'Close', 'data-dismiss' => 'alert', :type => 'button'}
+      %span{"aria-hidden" => "true"} ×
+    Invite #{params[:email]} to use OWERIGHT.
+    %span
+      = link_to 'Send Invitation', send_invite_path(:email => params[:email]), :class => 'btn btn-sm btn-success'
+
+
 %h1
   Contacts
   %span

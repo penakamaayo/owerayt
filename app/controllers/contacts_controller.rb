@@ -7,8 +7,9 @@ class ContactsController < ApplicationController
     @contacts = current_user.contacts.all
   end
 
+
   def create
-    if self.contact_exists?
+  if self.contact_exists?
       flash[:alert] = "Already a contact!"
       return redirect_to :contacts
     end
@@ -31,6 +32,12 @@ class ContactsController < ApplicationController
   end
 
 
+  def invite
+    OwerightMailer.send_contact_invitation(params[:email], current_user).deliver_now
+
+    redirect_to :contacts, :notice => "Successfully sent an invitation to #{params[:email]}."
+  end
+
 
 
 
@@ -41,7 +48,7 @@ class ContactsController < ApplicationController
 
     if user.nil?
       flash[:alert] = "User doesn't Exist!"
-      return redirect_to :contacts
+      return redirect_to contacts_path(:email => params[:contact_email])
     else
       @contact_id = user.id
     end

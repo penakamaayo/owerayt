@@ -1,0 +1,8 @@
+%h1 Hi #{@email}!
+
+%p #{@user.full_name.titleize} just sent you an invitation to join OWERIGHT!
+%br
+%p
+Click
+= link_to 'here', 'http://oweright.herokuapp.com/users/sign_up'
+to register.

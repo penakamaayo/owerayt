@@ -23,4 +23,8 @@ Rails.application.routes.draw do
 
   get 'debts/:owner' => 'debts#index'
 
+
+  get 'contacts/send_invite/:email', :to => 'contacts#invite',
+    :as => 'send_invite', :format => false, :constraints => {:email => /[^\/]+/}
+
 end
