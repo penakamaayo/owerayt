@@ -1,14 +1,6 @@
 var ready = function() {
-  var paid = document.getElementById('js-debt-paid').checked;
 
-  if (paid === true) {
-    $('.js-paid-date').show();
-  }
-  else {
-    $('.js-paid-date').hide();
-  }
-
-  $('#js-debt-paid').on('change', function(e) {
+  if ($('#js-debt-paid').length) {
     var paid = document.getElementById('js-debt-paid').checked;
 
     if (paid === true) {
@@ -17,7 +9,19 @@ var ready = function() {
     else {
       $('.js-paid-date').hide();
     }
-  });
+
+    $('#js-debt-paid').on('change', function(e) {
+      var paid = document.getElementById('js-debt-paid').checked;
+
+      if (paid === true) {
+        $('.js-paid-date').show();
+      }
+      else {
+        $('.js-paid-date').hide();
+      }
+    });
+  }
+
 
   if ($('#js-debt-owner').length) {
     var their_debt = document.getElementById('js-debt-owner').checked;
